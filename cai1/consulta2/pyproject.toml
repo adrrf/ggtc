@@ -1,0 +1,9 @@
+[project]
+name = "cai1-c2"
+version = "0.1.0"
+description = "Privacy-preserving processing of passenger data in untrusted cloud"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "phe>=1.5.0",  # Python library for Partially Homomorphic Encryption
+]
