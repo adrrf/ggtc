@@ -1,0 +1,45 @@
+version = 1
+requires-python = ">=3.11"
+
+[[package]]
+name = "cai1-c3"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "openmined-psi" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "openmined-psi", specifier = ">=1.0.0" }]
+
+[[package]]
+name = "openmined-psi"
+version = "2.0.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "protobuf" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/59/a9/34e96f2208c786a946810f03eac42daca888814b60616040fa759f089107/openmined_psi-2.0.5-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:8a1198f477959655e3098623c5b8394293b3474d18baf332fa8b7b886d5f7ba5", size = 1992085 },
+    { url = "https://files.pythonhosted.org/packages/75/69/9f49eef8d6ceded8f80a1967e9c50c31d106c01687ced1915c52b6ad9185/openmined_psi-2.0.5-cp311-cp311-manylinux_2_31_x86_64.whl", hash = "sha256:ed4dd60d36fa4e13c4f3915886ab54992cb68ade80be82d461f8032d951f206f", size = 2235767 },
+    { url = "https://files.pythonhosted.org/packages/b2/31/24460542a84783f99589f830111919657e0c89cc77f370f0313eed37427a/openmined_psi-2.0.5-cp311-cp311-manylinux_2_35_x86_64.whl", hash = "sha256:714fc7b2a207dbd9b41eec7c0055a1376cd741de7131a5d91b582756cce42644", size = 2195845 },
+    { url = "https://files.pythonhosted.org/packages/d3/71/8b9eb3e0027119bc14567bb065e8804f30f9e6137e3fc2b221d43fbf2c7f/openmined_psi-2.0.5-cp311-cp311-manylinux_2_39_x86_64.whl", hash = "sha256:31733cf5e312445fa666e1b70a71b2c25523c0ff0a229693d405041c8e003017", size = 2234330 },
+    { url = "https://files.pythonhosted.org/packages/0f/c5/96499e08796bcb5f99425e992ffdb031e6e43cc8bb6f72f991eff5120223/openmined_psi-2.0.5-cp312-cp312-macosx_14_0_arm64.whl", hash = "sha256:1fc5aeeb81135f4f0f29dd7615c58288d663040f5ac31e74da3fd0b4b42a92ee", size = 1992819 },
+    { url = "https://files.pythonhosted.org/packages/54/3c/3d3e33683f341ea12aba29dc707e652561860344015eb1ad0c527128af59/openmined_psi-2.0.5-cp312-cp312-manylinux_2_31_x86_64.whl", hash = "sha256:6ef9c8e3253eb0947da5a2cf25287daae52bf8cedd1fc4e978993361cfcca526", size = 2232651 },
+    { url = "https://files.pythonhosted.org/packages/4f/a9/520940a23bf090304a7aa1ff9086811dc92f427da95fac322aebd461a920/openmined_psi-2.0.5-cp312-cp312-manylinux_2_35_x86_64.whl", hash = "sha256:0f57b97798be17429e10254286c1190a98a878b78e637aa5d482a302b7b12722", size = 2195003 },
+    { url = "https://files.pythonhosted.org/packages/93/9f/47ebf975e29d3755430024d4c60eeb5cb9e34ed74ed85ab2534a87d3a0c8/openmined_psi-2.0.5-cp312-cp312-manylinux_2_39_x86_64.whl", hash = "sha256:33b6ad05192669dc96b94096b1d0fb01e2bdb1dae90ea71d25ac4ca8d1a9dee6", size = 2232674 },
+]
+
+[[package]]
+name = "protobuf"
+version = "5.27.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/71/a5/d61e4263e62e6db1990c120d682870e5c50a30fb6b26119a214c7a014847/protobuf-5.27.2.tar.gz", hash = "sha256:f3ecdef226b9af856075f28227ff2c90ce3a594d092c39bee5513573f25e2714", size = 401640 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e9/9d/318d07d4edd1dc1a29ae67f7bb42b6e8a570f817ebe8608bf3c9c518d4e8/protobuf-5.27.2-cp310-abi3-win32.whl", hash = "sha256:354d84fac2b0d76062e9b3221f4abbbacdfd2a4d8af36bab0474f3a0bb30ab38", size = 405829 },
+    { url = "https://files.pythonhosted.org/packages/b1/04/73b8fd7f34f3a2b2b64aa31a173b8aebbdb0c55523df4c027846bb44bc1e/protobuf-5.27.2-cp310-abi3-win_amd64.whl", hash = "sha256:0e341109c609749d501986b835f667c6e1e24531096cff9d34ae411595e26505", size = 426919 },
+    { url = "https://files.pythonhosted.org/packages/75/44/6ae304790fad936bb4cf09907a05d669b7600458a02b6c960fdaaeeab06e/protobuf-5.27.2-cp38-abi3-macosx_10_9_universal2.whl", hash = "sha256:a109916aaac42bff84702fb5187f3edadbc7c97fc2c99c5ff81dd15dcce0d1e5", size = 412246 },
+    { url = "https://files.pythonhosted.org/packages/cd/c7/a534268f9c3780be1ba50f5ed96243fa9cf6224a445de662c34e91ce0e61/protobuf-5.27.2-cp38-abi3-manylinux2014_aarch64.whl", hash = "sha256:176c12b1f1c880bf7a76d9f7c75822b6a2bc3db2d28baa4d300e8ce4cde7409b", size = 307143 },
+    { url = "https://files.pythonhosted.org/packages/27/e4/8dc4546be46873f8950cb44cdfe19b79d66d26e53c4ee5e3440406257fcd/protobuf-5.27.2-cp38-abi3-manylinux2014_x86_64.whl", hash = "sha256:b848dbe1d57ed7c191dfc4ea64b8b004a3f9ece4bf4d0d80a367b76df20bf36e", size = 309259 },
+    { url = "https://files.pythonhosted.org/packages/3a/fa/4c3ac5527ed2e5f3577167ecd5f8180ffcdc8bdd59c9f143409c19706456/protobuf-5.27.2-py3-none-any.whl", hash = "sha256:54330f07e4949d09614707c48b06d1a22f8ffb5763c159efd5c0928326a91470", size = 164772 },
+]

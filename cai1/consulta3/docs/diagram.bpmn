@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
+                   id="sample-diagram" 
+                   targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn2:collaboration id="Collaboration_1">
+    <bpmn2:participant id="Authority" name="Authority" processRef="AuthorityProcess" />
+    <bpmn2:participant id="Airline" name="Airline" processRef="AirlineProcess" />
+    <bpmn2:messageFlow id="MessageFlow_1" sourceRef="Task_AuthorityCreatePSIRequest" targetRef="Task_AirlineProcessRequest" />
+    <bpmn2:messageFlow id="MessageFlow_2" sourceRef="Task_AirlineGenerateResponse" targetRef="Task_AuthorityProcessResponse" />
+  </bpmn2:collaboration>
+  
+  <bpmn2:process id="AuthorityProcess" isExecutable="false">
+    <bpmn2:startEvent id="StartEvent_Authority" name="Start">
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Task_AuthorityPreparePoI" name="Prepare list of persons of interest">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AuthorityCreatePSIClient" name="Create PSI client">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AuthorityCreatePSIRequest" name="Create PSI request">
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AuthorityProcessResponse" name="Process PSI response">
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AuthorityGetIntersection" name="Compute intersection">
+      <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="EndEvent_Authority" name="End">
+      <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_Authority" targetRef="Task_AuthorityPreparePoI" />
+    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="Task_AuthorityPreparePoI" targetRef="Task_AuthorityCreatePSIClient" />
+    <bpmn2:sequenceFlow id="SequenceFlow_3" sourceRef="Task_AuthorityCreatePSIClient" targetRef="Task_AuthorityCreatePSIRequest" />
+    <bpmn2:sequenceFlow id="SequenceFlow_4" sourceRef="Task_AuthorityCreatePSIRequest" targetRef="Task_AuthorityProcessResponse" />
+    <bpmn2:sequenceFlow id="SequenceFlow_5" sourceRef="Task_AuthorityProcessResponse" targetRef="Task_AuthorityGetIntersection" />
+    <bpmn2:sequenceFlow id="SequenceFlow_6" sourceRef="Task_AuthorityGetIntersection" targetRef="EndEvent_Authority" />
+  </bpmn2:process>
+  
+  <bpmn2:process id="AirlineProcess" isExecutable="false">
+    <bpmn2:startEvent id="StartEvent_Airline" name="Start">
+      <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Task_AirlinePreparePassengers" name="Prepare passenger list">
+      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AirlineCreatePSIServer" name="Create PSI server">
+      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AirlineProcessRequest" name="Process PSI request">
+      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_10</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AirlineGenerateResponse" name="Generate PSI response">
+      <bpmn2:incoming>SequenceFlow_10</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="EndEvent_Airline" name="End">
+      <bpmn2:incoming>SequenceFlow_11</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_7" sourceRef="StartEvent_Airline" targetRef="Task_AirlinePreparePassengers" />
+    <bpmn2:sequenceFlow id="SequenceFlow_8" sourceRef="Task_AirlinePreparePassengers" targetRef="Task_AirlineCreatePSIServer" />
+    <bpmn2:sequenceFlow id="SequenceFlow_9" sourceRef="Task_AirlineCreatePSIServer" targetRef="Task_AirlineProcessRequest" />
+    <bpmn2:sequenceFlow id="SequenceFlow_10" sourceRef="Task_AirlineProcessRequest" targetRef="Task_AirlineGenerateResponse" />
+    <bpmn2:sequenceFlow id="SequenceFlow_11" sourceRef="Task_AirlineGenerateResponse" targetRef="EndEvent_Airline" />
+  </bpmn2:process>
+  
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_Authority_di" bpmnElement="Authority" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="750" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_Airline_di" bpmnElement="Airline" isHorizontal="true">
+        <dc:Bounds x="160" y="350" width="750" height="250" />
+      </bpmndi:BPMNShape>
+      
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_Authority">
+        <dc:Bounds x="212" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="218" y="225" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AuthorityPreparePoI_di" bpmnElement="Task_AuthorityPreparePoI">
+        <dc:Bounds x="300" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AuthorityCreatePSIClient_di" bpmnElement="Task_AuthorityCreatePSIClient">
+        <dc:Bounds x="450" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AuthorityCreatePSIRequest_di" bpmnElement="Task_AuthorityCreatePSIRequest">
+        <dc:Bounds x="600" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AuthorityProcessResponse_di" bpmnElement="Task_AuthorityProcessResponse">
+        <dc:Bounds x="600" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AuthorityGetIntersection_di" bpmnElement="Task_AuthorityGetIntersection">
+        <dc:Bounds x="750" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_Authority_end_di" bpmnElement="EndEvent_Authority">
+        <dc:Bounds x="882" y="282" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="890" y="325" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_3" bpmnElement="StartEvent_Airline">
+        <dc:Bounds x="212" y="452" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="218" y="495" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AirlinePreparePassengers_di" bpmnElement="Task_AirlinePreparePassengers">
+        <dc:Bounds x="300" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AirlineCreatePSIServer_di" bpmnElement="Task_AirlineCreatePSIServer">
+        <dc:Bounds x="450" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AirlineProcessRequest_di" bpmnElement="Task_AirlineProcessRequest">
+        <dc:Bounds x="600" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_AirlineGenerateResponse_di" bpmnElement="Task_AirlineGenerateResponse">
+        <dc:Bounds x="750" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_Airline_end_di" bpmnElement="EndEvent_Airline">
+        <dc:Bounds x="882" y="452" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="890" y="495" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="SequenceFlow_1">
+        <di:waypoint x="248" y="200" />
+        <di:waypoint x="300" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="SequenceFlow_2">
+        <di:waypoint x="400" y="200" />
+        <di:waypoint x="450" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="SequenceFlow_3">
+        <di:waypoint x="550" y="200" />
+        <di:waypoint x="600" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="SequenceFlow_4">
+        <di:waypoint x="650" y="240" />
+        <di:waypoint x="650" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="SequenceFlow_5">
+        <di:waypoint x="700" y="300" />
+        <di:waypoint x="750" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="SequenceFlow_6">
+        <di:waypoint x="850" y="300" />
+        <di:waypoint x="882" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="SequenceFlow_7">
+        <di:waypoint x="248" y="470" />
+        <di:waypoint x="300" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="SequenceFlow_8">
+        <di:waypoint x="400" y="470" />
+        <di:waypoint x="450" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="SequenceFlow_9">
+        <di:waypoint x="550" y="470" />
+        <di:waypoint x="600" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="SequenceFlow_10">
+        <di:waypoint x="700" y="470" />
+        <di:waypoint x="750" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="SequenceFlow_11">
+        <di:waypoint x="850" y="470" />
+        <di:waypoint x="882" y="470" />
+      </bpmndi:BPMNEdge>
+      
+      <bpmndi:BPMNEdge id="MessageFlow_1_di" bpmnElement="MessageFlow_1">
+        <di:waypoint x="650" y="240" />
+        <di:waypoint x="650" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_2_di" bpmnElement="MessageFlow_2">
+        <di:waypoint x="800" y="430" />
+        <di:waypoint x="800" y="370" />
+        <di:waypoint x="650" y="370" />
+        <di:waypoint x="650" y="340" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
