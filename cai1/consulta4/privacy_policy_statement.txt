@@ -1,0 +1,33 @@
+
+PRIVACY POLICY STATEMENT FOR FLIGHT PRICE QUERIES
+
+At our airline, we take your privacy seriously. When you search for flight prices on our platform, 
+we employ advanced privacy-preserving technology to ensure that your search queries remain private 
+and are not tracked or monitored.
+
+Our Commitment to Your Privacy:
+
+1. Privacy-Preserving Flight Price Retrieval: When you request the price of a 
+   specific flight, our system uses an Information-Theoretic Private Information Retrieval (IT-PIR) 
+   protocol. This technology mathematically guarantees that our servers cannot determine which 
+   flight you are interested in.
+
+2. No Query Tracking: Our servers only process encrypted queries and cannot 
+   determine the specific flights you are searching for. This means we cannot build a profile of 
+   your travel interests or preferences based on your price queries.
+
+3. Data Minimization: We only share the minimum information necessary for you 
+   to complete your intended task. When retrieving flight prices, no personally identifiable 
+   information is linked to your queries.
+
+4. Multi-Server Security: Our price retrieval system utilizes multiple independent 
+   servers that process different parts of your query. As long as these servers do not collude, 
+   the privacy of your query is mathematically guaranteed.
+
+We use your flight search data solely for the purpose of providing you with accurate pricing 
+information and do not retain, analyze, or share information about specific flight prices you 
+have requested.
+
+This privacy-preserving approach represents our commitment to respecting your privacy while 
+delivering the flight information you need.
+    

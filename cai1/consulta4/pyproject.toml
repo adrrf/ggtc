@@ -1,0 +1,13 @@
+[project]
+name = "privacy-preserving-flight-price-retrieval"
+version = "1.0.0"
+description = "A privacy-preserving protocol for retrieving flight prices without revealing which flight the client is interested in"
+
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "click",
+    "pandas",
+    "colorama",
+    "tqdm"
+]
