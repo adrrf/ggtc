@@ -1,0 +1,7 @@
+[project]
+name = "privacy-preserving-passenger-screening"
+version = "1.0.0"
+description = "A privacy-preserving protocol for passenger screening without revealing passenger identities"
+
+requires-python = ">=3.8"
+dependencies = []
